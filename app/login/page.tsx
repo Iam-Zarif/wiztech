@@ -4,7 +4,7 @@ import Container from "@/layout/Container";
 import logo from "@/public/icons/common/logo.svg";
 import google from "@/public/icons/auth/google.svg";
 import apple from "@/public/icons/auth/apple.svg";
-import login from "@/public/images/login.svg";
+import loginImg from "@/public/images/login.svg";
 import Image from "next/image";
 import Link from "next/link";
 import { useMemo } from "react";
@@ -17,6 +17,9 @@ export default function LoginPage() {
     ],
     []
   );
+
+    const login = useMemo(() => loginImg, []);
+
 
   return (
     <Container>
@@ -32,7 +35,7 @@ export default function LoginPage() {
               priority
             />
             <p className="text-2xl lg:text-[2.1rem] font-semibold mt-5">
-              Create New Account
+             Welcome Back
             </p>
             <p className=" lg:font-medium mt-1">
               Let&apos;s login to grab amazing deal
