@@ -8,7 +8,7 @@ type ContainerProps = {
 
 export default function Container({ children}: ContainerProps) {
   return (
-    <div className={`h-screen  flex flex-col  px-4 sm:px-6 lg:px-8 max-w-380 mx-auto `}>
+    <div className={` flex flex-col  px-4 sm:px-6 lg:px-8 max-w-380 mx-auto `}>
       {children}
     </div>
   );
