@@ -29,7 +29,7 @@ export default function LoginPage() {
             <p className="text-2xl lg:text-[2.1rem] font-semibold mt-5">
               Create New Account
             </p>
-            <p className="font-medium mt-1">Let’s login to grab amazing deal</p>
+            <p className="font-medium mt-1">Let&apos;s login to grab amazing deal</p>
 
             <div className="flex w-full flex-col items-center mt-8 gap-6">
               {providers.map((provider, i) => (
@@ -50,7 +50,7 @@ export default function LoginPage() {
             </div>
 
             <div className="mt-6 flex items-center font-medium gap-2">
-              <p>Don't have an account?</p>
+              <p>Don&apos;t have an account?</p>
               <Link className="text-(--color-primary)" href={"/singup"}>
                 Sign Up
               </Link>
