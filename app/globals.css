@@ -2,18 +2,19 @@
 
 
 :root {
-  --color-primary: #6C0443;
-  --color-border: #DFE2E6;
+    --color-primary: #6C0443;
+    --color-border: #DFE2E6;
+    --color-input: #F5F6F7;
 }
 
 @font-face {
     font-family: "General Sans Variable";
     src: url("https://db.onlinewebfonts.com/t/7b7a625024c0f39cbca2cf9674f51d94.eot");
     src: url("https://db.onlinewebfonts.com/t/7b7a625024c0f39cbca2cf9674f51d94.eot?#iefix")format("embedded-opentype"),
-    url("https://db.onlinewebfonts.com/t/7b7a625024c0f39cbca2cf9674f51d94.woff2")format("woff2"),
-    url("https://db.onlinewebfonts.com/t/7b7a625024c0f39cbca2cf9674f51d94.woff")format("woff"),
-    url("https://db.onlinewebfonts.com/t/7b7a625024c0f39cbca2cf9674f51d94.ttf")format("truetype"),
-    url("https://db.onlinewebfonts.com/t/7b7a625024c0f39cbca2cf9674f51d94.svg#General Sans Variable")format("svg");
+        url("https://db.onlinewebfonts.com/t/7b7a625024c0f39cbca2cf9674f51d94.woff2")format("woff2"),
+        url("https://db.onlinewebfonts.com/t/7b7a625024c0f39cbca2cf9674f51d94.woff")format("woff"),
+        url("https://db.onlinewebfonts.com/t/7b7a625024c0f39cbca2cf9674f51d94.ttf")format("truetype"),
+        url("https://db.onlinewebfonts.com/t/7b7a625024c0f39cbca2cf9674f51d94.svg#General Sans Variable")format("svg");
 }
 
 body {
