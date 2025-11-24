@@ -12,7 +12,7 @@ interface PropertyCardProps {
   beds: number;
   baths: number;
   size: number;
-  title: string;
+  title: string;  
   price: number;
   location: string;
 }
@@ -30,7 +30,6 @@ const PropertyCard = ({
 
   return (
     <>
-      {/* Modal */}
       <PropertyCardModal
         isOpen={open}
         onClose={() => setOpen(false)}
@@ -45,7 +44,8 @@ const PropertyCard = ({
           width={100}
           height={100}
           className="w-full cursor-pointer"
-          onClick={() => setOpen(true)} // OPEN MODAL
+          onClick={() => setOpen(true)} 
+          priority
         />
 
         <div className="mt-2 flex items-center gap-5">

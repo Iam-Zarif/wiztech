@@ -32,16 +32,12 @@ const PropertyCardModal = ({ isOpen, onClose, image }: PropertyCardModalProps) =
         className="
           fixed 
           left-1/2 z-50 
-          -translate-x-1/2 
-          
-          top-1/2 -translate-y-1/2           /* MOBILE CENTER */
-          md:top-128 md:-translate-y-1/2     /* DESKTOP ORIGINAL POSITION */
-
-          bg-white rounded-xl shadow-xl
-          
-          w-[95%] max-w-[95%]                /* MOBILE FULL WIDTH */
-          md:max-w-272                       /* DESKTOP EXACT SAME */
-
+          -translate-x-1/2          
+          top-1/2 -translate-y-1/2          
+          md:top-128 md:-translate-y-1/2    
+          bg-white rounded-xl shadow-xl       
+          w-[95%] max-w-[95%]               
+          md:max-w-272                   
           py-6 px-4 md:px-10 md:py-8
           animate-scaleIn 
         "
@@ -83,6 +79,7 @@ const PropertyCardModal = ({ isOpen, onClose, image }: PropertyCardModalProps) =
           {images.map((img, index) => (
             <Image
               key={index}
+              priority
               src={img}
               alt="image"
               width={110}

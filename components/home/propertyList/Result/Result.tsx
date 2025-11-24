@@ -113,7 +113,7 @@ const Result = ({ width }: { width?: string }) => {
           </div>
         </div>
       </div>
-      <div className="grid md:grid-cols-2 gap-4 grid-cols-1 2xl:grid-cols-3">
+      <div className="grid md:grid-cols-2 gap-10 lg:gap-4 grid-cols-1 2xl:grid-cols-3">
         {properties.map((property, index) => (
           <PropertyCard key={index} {...property} />
         ))}
@@ -128,11 +128,11 @@ const Result = ({ width }: { width?: string }) => {
         <div className="flex items-center gap-3">
           <p className="text-white bg-(--color-primary) cursor-pointer w-8 h-8 flex items-center justify-center  rounded-md">1</p>
           <p className=" bg-(--color-input) cursor-pointer w-8 h-8 flex items-center justify-center  rounded-md">2</p>
-          <p className=" bg-(--color-input) cursor-pointer w-8 h-8 flex items-center justify-center hidden lg:block  rounded-md">3</p>
+          <p className=" bg-(--color-input) cursor-pointer w-8 h-8  items-center justify-center hidden lg:flex  rounded-md">3</p>
           <p className=" bg-(--color-input) cursor-pointer w-8 h-8 flex items-center justify-center  rounded-md">...</p>
           <p className=" bg-(--color-input) cursor-pointer w-8 h-8 flex items-center justify-center  rounded-md">8</p>
           <p className=" bg-(--color-input) cursor-pointer w-8 h-8 flex items-center justify-center  rounded-md">9</p>
-          <p className=" bg-(--color-input) cursor-pointer w-8 h-8 flex items-center justify-center hidden lg:block  rounded-md">10</p>
+          <p className=" bg-(--color-input) cursor-pointer w-8 h-8  items-center justify-center hidden lg:flex  rounded-md">10</p>
         </div>
 
          <div className="border cursor-pointer px-3 py-1.5 border-(--color-border) rounded-lg flex items-center gap-2">

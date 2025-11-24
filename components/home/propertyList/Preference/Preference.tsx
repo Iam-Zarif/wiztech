@@ -35,7 +35,7 @@ const Preference = ({ width }: { width?: string }) => {
           <p className="font-medium px-4">Property Preference</p>{" "}
           <div className="bg-(--color-input) rounded-lg py-3.5 px-2.5 flex items-center gap-2 cursor-pointer">
   
-            <p className="text-sm font-medium">Reset Filter</p>{" "}
+            <p className="text-sm font-medium">Reset <span className="hidden md:block">Filter</span></p>{" "}
             <Image src={reset} width={20} height={20} alt="reset" />{" "}
           </div>{" "}
         </div>{" "}
