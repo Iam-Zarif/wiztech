@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&display=swap");
 @import "tailwindcss";
 
 
@@ -71,8 +72,8 @@ body {
   animation: scaleIn 0.25s ease-out;
 }
 
-.clashDisplay{
-    font-family: 'Clash Display Variable', sans-serif !important;
+.clashDisplay {
+  font-family: 'Clash Display Variable', sans-serif !important;
 
 }
 
@@ -121,32 +122,52 @@ body {
 
 
 .bg-linear-pink {
---background: linear-gradient(90.66deg, #FCC3FF 0%, #F75EFF 100%);
-background: var(--background);
+  --background: linear-gradient(90.66deg, #FCC3FF 0%, #F75EFF 100%);
+  background: var(--background);
 }
 
 
 .courses-bg {
-background: linear-gradient(
-180deg,
-rgba(249, 196, 254, 0) 0%,
-rgba(252, 221, 255, 0.5) 44.34%,
-rgba(249, 196, 254, 0) 100%
-);
+  background: linear-gradient(180deg,
+      rgba(249, 196, 254, 0) 0%,
+      rgba(252, 221, 255, 0.5) 44.34%,
+      rgba(249, 196, 254, 0) 100%);
 }
 
 
 .indigo-linear-bg {
-background: linear-gradient(214.18deg, #2A0019 20.22%, #5C0639 77.53%);
+  background: linear-gradient(214.18deg, #2A0019 20.22%, #5C0639 77.53%);
 }
 
 .course-card-bg {
-background: linear-gradient(270.28deg, rgba(42, 0, 25, 0.46) 29.3%, #4C002D 98.92%);
+  background: linear-gradient(270.28deg, rgba(42, 0, 25, 0.46) 29.3%, #4C002D 98.92%);
 
 }
 
-.trusted-by-bg{
+.trusted-by-bg {
   background: linear-gradient(180deg, #2A0019 0%, rgba(60, 76, 90, 0.83) 100%);
 
 }
 
+.footer-bg {
+  background: linear-gradient(180deg, #251621 0%, #42233A 100%);
+
+}
+
+.alexadnria {
+  font-family: "Alexandria", sans-serif;
+
+}
+
+.footer-logo-text {
+  background: linear-gradient(90deg, #8A7384 28.67%, #CAC3C3 46.17%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+
+  /* Responsive font size */
+  font-size: clamp(5rem, 15vw, 25rem);
+  white-space: nowrap;
+  text-align: center;
+}
