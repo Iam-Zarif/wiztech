@@ -51,13 +51,11 @@ const Navbar = () => {
         </Container>
       </div>
 
-      {/* Mobile Navbar */}
       <div className="lg:hidden fixed top-0 left-0 w-full z-50 flex items-center justify-between px-4 py-4 bg-white rounded-b-2xl shadow-md">
         <Image src={logo} alt="logo" width={120} height={80} />
         <Image src={profile} alt="profile" className="rounded-full object-cover object-center" width={28} height={28} />
       </div>
 
-      {/* Mobile Bottom Navigation */}
       <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white rounded-t-2xl shadow-[0_-4px_12px_rgba(0,0,0,0.1)] flex justify-between px-6 py-3 text-sm z-50">
         {links.map((l, i) => {
           const mobileLabel = l.label === "Contact Us" ? "Contact" : l.label;
@@ -75,8 +73,7 @@ const Navbar = () => {
         })}
       </div>
 
-      {/* Push content down so it's not hidden behind fixed navbar */}
-      <div className="h-[80px] lg:h-[120px]"></div>
+      <div className="h-20 lg:h-[120px]"></div>
     </>
   );
 };

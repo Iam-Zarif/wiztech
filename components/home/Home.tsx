@@ -1,5 +1,6 @@
 "use client";
 
+import Courses from "../courses/Courses";
 import ProfitCalculator from "./ProfitCalculator/ProfitCalculator";
 import PropertySection from "./PropertySection/PropertySection";
 
@@ -10,6 +11,7 @@ const Home = () => {
    <>
    <PropertySection/>
     <ProfitCalculator/>
+    <Courses/>
     </>
   );
 };
