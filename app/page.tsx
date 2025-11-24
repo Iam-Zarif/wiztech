@@ -1,9 +1,10 @@
+import Home from "@/components/home/Home";
 
 
 export default function HomePage() {
   return (
-  <div>
-    Homepage
+  <div className="pb-44">
+    <Home/>
   </div>
   );
 }

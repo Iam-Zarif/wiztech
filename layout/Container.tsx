@@ -13,7 +13,7 @@ export default function Container({ children, className }: ContainerProps) {
   const size = pathname.startsWith("/auth") ? "max-w-380" : "max-w-480";
 
   return (
-    <div className={`flex flex-col px-4 sm:px-6 lg:px-8 ${size} mx-auto ${className || ""}`}>
+    <div className={`plg:px-6 px-4 ${size} mx-auto ${className || ""}`}>
       {children}
     </div>
   );

@@ -21,3 +21,12 @@ body {
     font-family: "General Sans Variable", sans-serif;
 }
 
+
+@keyframes scaleIn {
+  0% { transform: scale(0.9) translate(-50%, -50%); opacity: 0; }
+  100% { transform: scale(1) translate(-50%, -50%); opacity: 1; }
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.25s ease-out;
+}
