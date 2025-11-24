@@ -112,7 +112,7 @@ const Courses = () => {
                 Subscribe for $5.00/mo
               </p>
             </div>
-            <div className="absolute z-99 bottom-20 lg:bottom-60 right-36">
+            <div className="absolute z-99 bottom-20 lg:bottom-60 w-auto right-1 lg:right-36">
               <div className="bg-white p-2 lg:p-4 rounded-xl">
                 <div className="flex items-center justify-between gap-3 lg:gap-5">
                   <div className="bg-[#ECF3F6] rounded-lg silka h-full p-1 text-sm lg:p-3 text-[#1882FB] flex flex-col items-center ">

@@ -169,7 +169,6 @@ const ProfitCalculator = () => {
             By proceeding you agree to our Platform terms & Privacy Notice
           </p>
 
-          {/* Stats Card */}
           <div className="lg:mt-16 mt-8 border bg-[#00000033] w-full max-w-7xl mx-auto border-[#505152] py-8 rounded-[2.5rem]">
             <div className="flex flex-col lg:flex-row px-6 items-start lg:items-center justify-between w-full gap-4 lg:gap-0">
               <p className="text-white text-2xl lg:text-4xl font-medium">

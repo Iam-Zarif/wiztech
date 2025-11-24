@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/shared/Navbar";
 import Footer from "@/components/shared/Footer";
+import "@smastrom/react-rating/style.css";
+
 
 export const metadata: Metadata = {
   title: "WiztecBD",
