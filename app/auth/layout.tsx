@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function AuthLayout({ children }: { children: React.ReactNode }) {
   return (
     <Container>
-      <div className="md:flex pt-18 lg:pt-0 items-center min-h-screen justify-center">
+      <div className="md:flex pt-12 lg:pt-0 items-center min-h-screen justify-center">
         <div className="grid grid-cols-1 gap-20 max-w-6xl mx-auto lg:grid-cols-12 items-center w-full">
           <div className="col-span-5 flex flex-col items-center w-full">
             {children}
