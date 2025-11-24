@@ -38,7 +38,7 @@ const Courses = () => {
               with Zero marketing cost and a built-in sales network.
             </p>
           </div>
-          <div className="bg-white mt-10 rounded-full border border-[#F2F2F2] p-2 flex gap-4 overflow-x-auto sm:overflow-x-visible flex-nowrap scrollbar-hide">
+          <div className="bg-white mt-10 rounded-full border border-[#F2F2F2] p-2 flex gap-4 lg:w-auto w-full overflow-x-auto sm:overflow-x-visible flex-nowrap scrollbar-hide">
             {courseIcons.map((course, index) => (
               <div
                 key={index}
@@ -52,9 +52,10 @@ const Courses = () => {
                   src={course.icon}
                   width={30}
                   height={30}
+                  className="lg:w-auto w-5"
                   alt={course.label}
                 />
-                <span className="font-semibold">{course.label}</span>
+                <span className="lg:font-semibold lg:text-[16px] text-sm">{course.label}</span>
               </div>
             ))}
           </div>
