@@ -41,30 +41,26 @@ const Testimonial = () => {
         </p>
 
         <div
-          className="flex transition-transform duration-500 ease-out"
-          style={{
-            transform: `translateX(calc(50% - ${(active + 0.5) * cardWidth}px))`,
-          }}
-        >
-          {testimonials.map((t, i) => (
-            <div
-              key={i}
-              className={`shrink-0 px-2 transition-all duration-500 ${
-                i === active ? "scale-100" : "scale-90 opacity-80"
-              }`}
-              style={{
-                width:
-                  window.innerWidth < 640
-                    ? "90vw"
-                    : window.innerWidth < 1024
-                    ? "70vw"
-                    : "60vw",
-              }}
-            >
-              <TestimonialCard />
-            </div>
-          ))}
-        </div>
+  className="flex transition-transform duration-500 ease-out"
+  style={{
+    transform: `translateX(calc(50% - ${(active + 0.5) * cardWidth}px))`,
+  }}
+>
+  {testimonials.map((t, i) => (
+    <div
+      key={i}
+      className={`shrink-0 px-2 transition-all duration-500 ${
+        i === active ? "scale-100" : "scale-90 opacity-80"
+      }`}
+      style={{
+        width: i === active ? cardWidth : cardWidth * 0.85, // slightly smaller inactive cards
+      }}
+    >
+      <TestimonialCard />
+    </div>
+  ))}
+</div>
+
       </div>
     </div>
   );
