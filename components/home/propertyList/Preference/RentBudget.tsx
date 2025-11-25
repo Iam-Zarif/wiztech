@@ -26,32 +26,45 @@ const RentBudget = () => {
   const valueToPos = (value: number) =>
     sliderWidth * ((value - minLimit) / (maxLimit - minLimit));
 
-  const handleMouseUp = () => setDragging(null);
 
-  useEffect(() => {
-    const posToValue = (pos: number) =>
-      Math.round((pos / sliderWidth) * (maxLimit - minLimit) + minLimit);
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!dragging) return;
-      const rect = sliderRef.current?.getBoundingClientRect();
-      if (!rect) return;
-      let pos = e.clientX - rect.left;
-      pos = Math.max(0, Math.min(pos, sliderWidth));
-      const value = posToValue(pos);
+useEffect(() => {
+const posToValue = (pos: number) =>
+Math.round((pos / sliderWidth) * (maxLimit - minLimit) + minLimit);
 
-      if (dragging === "min") {
-        setMinValue(() => Math.min(value, maxValue));
-      } else if (dragging === "max") {
-        setMaxValue(() => Math.max(value, minValue));
-      }
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("mouseup", handleMouseUp);
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("mouseup", handleMouseUp);
-    };
-  }, [dragging, sliderWidth, minValue, maxValue]);
+const handleMove = (clientX: number) => {
+if (!dragging) return;
+const rect = sliderRef.current?.getBoundingClientRect();
+if (!rect) return;
+let pos = clientX - rect.left;
+pos = Math.max(0, Math.min(pos, sliderWidth));
+const value = posToValue(pos);
+
+
+if (dragging === "min") setMinValue(() => Math.min(value, maxValue));
+if (dragging === "max") setMaxValue(() => Math.max(value, minValue));
+
+
+};
+
+const handleMouseMove = (e: MouseEvent) => handleMove(e.clientX);
+const handleTouchMove = (e: TouchEvent) => handleMove(e.touches[0].clientX);
+
+const handleUp = () => setDragging(null);
+const handleTouchEnd = () => setDragging(null);
+
+window.addEventListener("mousemove", handleMouseMove);
+window.addEventListener("mouseup", handleUp);
+window.addEventListener("touchmove", handleTouchMove);
+window.addEventListener("touchend", handleTouchEnd);
+
+return () => {
+window.removeEventListener("mousemove", handleMouseMove);
+window.removeEventListener("mouseup", handleUp);
+window.removeEventListener("touchmove", handleTouchMove);
+window.removeEventListener("touchend", handleTouchEnd);
+};
+}, [dragging, sliderWidth, minValue, maxValue]);
+
   return (
     <div className="border border-(--color-border) p-6 rounded-xl">
       <div className="flex justify-between w-full">
@@ -78,43 +91,24 @@ const RentBudget = () => {
           }}
         ></div>
 
-        <div
-          onMouseDown={(e) => {
-            e.preventDefault();
-            setDragging("min");
-          }}
-          className="absolute -translate-y-1/2 top-1/2 cursor-grab"
-          style={{
-            left: Math.min(valueToPos(minValue), sliderWidth - 12) - 12,
-          }}
-        >
-          <Image
-            src={range}
-            alt="range"
-            height={24}
-            width={24}
-            draggable={false}
-          />
-        </div>
+       <div
+  onMouseDown={(e) => { e.preventDefault(); setDragging("min"); }}
+  onTouchStart={(e) => { e.preventDefault(); setDragging("min"); }}
+  className="absolute -translate-y-1/2 top-1/2 cursor-grab"
+  style={{ left: Math.min(valueToPos(minValue), sliderWidth - 12) - 12 }}
+>
+  <Image src={range} alt="range" height={24} width={24} draggable={false} />
+</div>
 
-        <div
-          onMouseDown={(e) => {
-            e.preventDefault();
-            setDragging("max");
-          }}
-          className="absolute -translate-y-1/2 top-1/2 cursor-grab"
-          style={{
-            left: Math.min(valueToPos(maxValue), sliderWidth - 12) - 12,
-          }}
-        >
-          <Image
-            src={range}
-            alt="range"
-            height={24}
-            width={24}
-            draggable={false}
-          />
-        </div>
+<div
+  onMouseDown={(e) => { e.preventDefault(); setDragging("max"); }}
+  onTouchStart={(e) => { e.preventDefault(); setDragging("max"); }}
+  className="absolute -translate-y-1/2 top-1/2 cursor-grab"
+  style={{ left: Math.min(valueToPos(maxValue), sliderWidth - 12) - 12 }}
+>
+  <Image src={range} alt="range" height={24} width={24} draggable={false} />
+</div>
+
       </div>
 
       <div className="flex items-center gap-3 w-full">

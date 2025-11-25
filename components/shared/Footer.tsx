@@ -17,7 +17,7 @@ const Footer = () => {
   if (pathname.startsWith("/auth")) return null;
 
   return (
-    <div className="footer-bg  rounded-t-[4rem] pt-12 w-full px-4 sm:px-6 lg:px-8">
+    <div className="footer-bg h-ful rounded-t-[4rem] pt-12 w-full px-4 sm:px-6 lg:px-8">
       <Container>
         <div className="grid text-white w-full max-w-7xl mx-auto gap-8 sm:grid-cols-2 lg:grid-cols-3">
           <div className="flex justify-center items-center lg:items-start lg:justify-start w-full flex-col gap-2">
@@ -53,7 +53,7 @@ const Footer = () => {
         </div>
       </Container>
 
-      <p className="alexandria mt-12 sm:mt-16 font-semibold footer-logo-text text-center">
+      <p className="alexandria mt-8 font-semibold footer-logo-text text-center">
         WiztecBD
       </p>
     </div>

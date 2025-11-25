@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&display=swap");
 @import "tailwindcss";
 
-
 :root {
   --color-primary: #6C0443;
   --color-border: #DFE2E6;
@@ -165,9 +164,49 @@ body {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
+  font-size: clamp(2rem, 18vw, 25rem);
+  line-height: 1
+ 
+}
 
-  /* Responsive font size */
-  font-size: clamp(2rem, 15vw, 25rem);
-  white-space: nowrap;
-  text-align: center;
+
+.tools-linear-card {
+background: #4D5D69;
+background: linear-gradient(90deg,rgba(77, 93, 105, 1) 0%, rgba(161, 106, 107, 1) 100%);
+
+}
+
+.tools-card-shadow{
+  box-shadow: 0px 62px 136px 0px #0000001A;
+
+}
+
+.essential-tools-button{
+  background: linear-gradient(90deg, #BCB3A0 0%, #E0D8C9 100%);
+
+}
+
+.enterprise-plan {
+  background: radial-gradient(50% 50% at 50% 50%, #FBFD89 24%, #FFD900 87%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  font-weight: 700; 
+}
+
+
+.loader {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #ddd;
+  border-top-color: #6C0443;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }

@@ -21,7 +21,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="hidden lg:block fixed top-0 left-0 w-full z-50 bg-white  px-5">
+      <div className="hidden z-9999 lg:block fixed top-0 left-0 w-full  bg-white  px-5">
         <Container>
           <div className="w-full lg:py-7 flex items-center justify-between">
             <Image src={logo} alt="logo" width={180} height={100} />
@@ -31,7 +31,9 @@ const Navbar = () => {
                   key={i}
                   href={l.href}
                   className={`font-medium ${
-                    pathname === l.href ? "text-(--color-primary)" : "text-[#434953]"
+                    pathname === l.href
+                      ? "text-(--color-primary)"
+                      : "text-[#434953]"
                   }`}
                 >
                   {l.label}
@@ -43,7 +45,10 @@ const Navbar = () => {
                 <Image src={fav} alt="fav" width={20} height={20} />
                 <p className="font-medium">Favourite</p>
               </div>
-              <Link href={"/auth/login"} className="text-white bg-(--color-primary) px-4 py-2.5 rounded-full font-semibold cursor-pointer">
+              <Link
+                href={"/auth/login"}
+                className="text-white bg-(--color-primary) px-4 py-2.5 rounded-full font-semibold cursor-pointer"
+              >
                 Login Now
               </Link>
             </div>
@@ -51,20 +56,31 @@ const Navbar = () => {
         </Container>
       </div>
 
-      <div className="lg:hidden fixed top-0 left-0 w-full z-50 flex items-center justify-between px-4 py-4 bg-white rounded-b-2xl shadow-md">
+      <div className="lg:hidden fixed top-0 left-0 w-full  flex items-center justify-between px-4 py-4 bg-white rounded-b-2xl shadow-md">
         <Image src={logo} alt="logo" width={120} height={80} />
-<Link href={"/auth/login"}>        <Image src={profile} alt="profile" className="rounded-full object-cover object-center" width={28} height={28} />
-</Link>      </div>
+        <Link href={"/auth/login"}>
+          {" "}
+          <Image
+            src={profile}
+            alt="profile"
+            className="rounded-full object-cover object-center"
+            width={28}
+            height={28}
+          />
+        </Link>{" "}
+      </div>
 
-      <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white rounded-t-2xl shadow-[0_-4px_12px_rgba(0,0,0,0.1)] flex justify-between px-6 py-3 text-sm z-50">
+      <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white rounded-t-2xl shadow-[0_-4px_12px_rgba(0,0,0,0.1)] flex justify-between px-6 py-3 text-sm z-99999">
         {links.map((l, i) => {
           const mobileLabel = l.label === "Contact Us" ? "Contact" : l.label;
           return (
             <Link
               key={i}
               href={l.href}
-              className={`font-medium ${
-                pathname === l.href ? "text-(--color-primary)" : "text-[#434953]"
+              className={`font-medium  ${
+                pathname === l.href
+                  ? "text-(--color-primary)"
+                  : "text-[#434953]"
               }`}
             >
               {mobileLabel}

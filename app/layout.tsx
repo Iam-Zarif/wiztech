@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/shared/Navbar";
-import Footer from "@/components/shared/Footer";
+import 'keen-slider/keen-slider.min.css'
 import "@smastrom/react-rating/style.css";
-
 
 export const metadata: Metadata = {
   title: "WiztecBD",
@@ -45,11 +44,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="pb-10">
-        <Navbar/>
-        {children}
-        <Footer/>
-        </body>
+      <body className="flex-1">
+        <Navbar />
+        <div className=""> {children}</div>
+        
+      </body>
     </html>
   );
 }

@@ -25,7 +25,7 @@ const Courses = () => {
     <div className="courses-bg h-full mt-10 lg:mt-20 w-full">
       <Container>
         <div className="w-full flex-col  flex items-center justify-center ">
-          <button className="bg-linear-pink uppercase text-sm md:text-[16px] font-medium flex items-center justify-center rounded-full px-5 py-2.5 lg:px-6 lg:py-3">
+          <button className="bg-linear-pink uppercase text-sm md:text-[16px] font-medium flex items-center justify-center rounded-full px-4 py-2.5  lg:py-3">
             Diversify revenue stream
           </button>
           <div>
@@ -92,7 +92,7 @@ const Courses = () => {
               value and generate recurring income.
             </p>
 
-            <button className="uppercase mt-5 text-sm md:text-[16px] font-medium text-white flex items-center justify-center bg-[#2c1a2d] rounded-full px-5 py-2.5 lg:px-6 lg:py-3">
+            <button className="uppercase mt-5 text-sm md:text-[16px] font-medium text-white flex items-center justify-center bg-[#2c1a2d] rounded-full px-4 py-2.5  lg:py-3">
               Learn More
             </button>
           </div>

@@ -17,6 +17,7 @@ const ProfitCalculator = () => {
     handleResize(); // initial check
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
   const stats = [
     {
       title: "CO-SELLERS IN NETWORK",
@@ -41,28 +42,27 @@ const ProfitCalculator = () => {
   ];
 
   const containerRef = useRef<HTMLDivElement>(null);
-  const ellipseRefs = [
-    useRef<HTMLDivElement>(null),
-    useRef<HTMLDivElement>(null),
-    useRef<HTMLDivElement>(null),
-  ];
-  const [stars, setStars] = useState<
-    { top: number; left: number; width: number; height: number }[]
-  >([]);
 
-  useLayoutEffect(() => {
-    const newStars = Array.from({ length: 50 }).map(() => ({
-      width: Math.random() * 3 + 1,
-      height: Math.random() * 3 + 1,
-      top: Math.random() * 100,
-      left: Math.random() * 100,
-    }));
-    setStars(newStars);
-  }, []);
+  // Individual refs for ESLint-safe access
+  const ellipseRef0 = useRef<HTMLDivElement>(null);
+  const ellipseRef1 = useRef<HTMLDivElement>(null);
+  const ellipseRef2 = useRef<HTMLDivElement>(null);
+
+const [stars] = useState(() =>
+  Array.from({ length: 50 }).map(() => ({
+    width: Math.random() * 3 + 1,
+    height: Math.random() * 3 + 1,
+    top: Math.random() * 100,
+    left: Math.random() * 100,
+  }))
+);
+
+// Remove the useLayoutEffect entirely
+
 
   useLayoutEffect(() => {
     if (!containerRef.current) return;
-    const container = containerRef.current!;
+    const container = containerRef.current;
     const containerWidth = container.offsetWidth;
     const containerHeight = container.offsetHeight;
 
@@ -71,6 +71,8 @@ const ProfitCalculator = () => {
       { minX: containerWidth / 3, maxX: (2 * containerWidth) / 3 },
       { minX: (2 * containerWidth) / 3, maxX: containerWidth },
     ];
+
+    const ellipseRefs = [ellipseRef0, ellipseRef1, ellipseRef2];
 
     ellipseRefs.forEach((ref, index) => {
       if (!ref.current) return;
@@ -100,25 +102,28 @@ const ProfitCalculator = () => {
 
   return (
     <div className="pt-12">
+      {" "}
       <div
         ref={containerRef}
         className="relative w-full min-h-screen bg-[#3c142b] overflow-hidden"
       >
+        {/* Ellipses */}{" "}
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+          {" "}
           <div
-            ref={ellipseRefs[0]}
+            ref={ellipseRef0}
             className="absolute w-40 h-40 lg:w-52 lg:h-52 bg-neutral-400 blur-[120px] rounded-full"
-          />
+          />{" "}
           <div
-            ref={ellipseRefs[1]}
+            ref={ellipseRef1}
             className="absolute w-56 h-56 lg:w-72 lg:h-72 bg-neutral-300 blur-[150px] rounded-[50%_35%_50%_35%]"
-          />
+          />{" "}
           <div
-            ref={ellipseRefs[2]}
+            ref={ellipseRef2}
             className="absolute w-32 h-48 lg:w-44 lg:h-64 bg-[#FFAA44]/30 blur-[100px] rounded-[40%_60%_40%_60%]"
-          />
+          />{" "}
         </div>
-
+        {/* Stars */}
         <div className="absolute inset-0 pointer-events-none z-0">
           {stars.map((s, i) => (
             <div
@@ -133,9 +138,9 @@ const ProfitCalculator = () => {
             />
           ))}
         </div>
-
+        {/* Main content */}
         <div className="relative z-10 flex flex-col items-center py-14 px-4 lg:px-8">
-          <button className="uppercase  text-sm md:text-[16px] font-medium text-white flex items-center justify-center bg-[#2c1a2d] rounded-full px-5 py-2.5 lg:px-6 lg:py-3">
+          <button className="uppercase text-sm md:text-[16px] font-medium text-white flex items-center justify-center bg-[#2c1a2d] rounded-full px-4 py-2.5 lg:py-3">
             Build for you
           </button>
 
@@ -143,7 +148,7 @@ const ProfitCalculator = () => {
             Built for Creators. <br /> Powered for Profit
           </p>
 
-          <p    className="text-white silka mt-5 max-w-2xl text-sm text-center  lg:text-lg">
+          <p className="text-white silka mt-5 max-w-2xl text-sm text-center lg:text-lg">
             Create and sell courses, consulting services, and communities - with
             Zero marketing cost and a built-in sales network.
           </p>
@@ -154,7 +159,6 @@ const ProfitCalculator = () => {
               className="bg-[#3B3B4B] placeholder:text-[#A6A6A6] rounded-full px-6 py-4 w-full lg:py-7"
               placeholder={placeholder}
             />
-
             <div className="absolute top-1 right-1 gradient-button-purple h-[87%] px-4 lg:px-6 flex flex-col justify-center items-center rounded-full cursor-pointer lg:h-[90%]">
               <p className="text-white text-sm font-semibold text-center leading-tight lg:text-base">
                 Start for Free
@@ -169,12 +173,13 @@ const ProfitCalculator = () => {
             By proceeding you agree to our Platform terms & Privacy Notice
           </p>
 
+          {/* Stats */}
           <div className="lg:mt-16 mt-8 border bg-[#00000033] w-full max-w-7xl mx-auto border-[#505152] py-8 rounded-[2.5rem]">
             <div className="flex flex-col lg:flex-row px-6 items-start lg:items-center justify-between w-full gap-4 lg:gap-0">
               <p className="text-white text-2xl lg:text-4xl font-medium">
                 Sell from day one - even with zero audience
               </p>
-              <button className="border border-neutral-50 lg:teext-[16px] text-sm text-neutral-50 rounded-full px-5 py-2 cursor-pointer lg:px-6 lg:py-3">
+              <button className="border border-neutral-50 lg:text-[16px] text-sm text-neutral-50 rounded-full px-5 py-2 cursor-pointer lg:px-6 lg:py-3">
                 Open Calculator
               </button>
             </div>
