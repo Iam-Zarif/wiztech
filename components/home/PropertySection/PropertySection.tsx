@@ -19,7 +19,7 @@ const PropertySection = () => {
   }, [isDrawerOpen]);
   return (
      <Container>
-      <div className="flex justify-between items-center md:w-[75%] w-full mx-auto mb-4 lg:hidden">
+      <div className="flex  justify-between items-center md:w-[75%] w-full mx-auto mb-4 lg:hidden">
         <button
           className="text-white bg-(--color-primary) px-4 py-2 rounded-lg"
           onClick={() => setIsDrawerOpen(true)}
@@ -46,7 +46,7 @@ const PropertySection = () => {
 
       <div
         className={`
-          fixed top-0 left-0 lg:hidden bottom-0 w-full bg-white p-6 z-50 shadow-xl overflow-y-auto
+          fixed top-0 py-20 left-0 lg:hidden bottom-0 w-full bg-white p-6 z-50 shadow-xl overflow-y-auto
           transition-transform duration-300
           ${isDrawerOpen ? "translate-x-0" : "-translate-x-full"}
         `}

@@ -21,7 +21,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="hidden z-9999 lg:block fixed top-0 left-0 w-full  bg-white  px-5">
+      <div className="hidden z-99999 lg:block fixed top-0 left-0 w-full  bg-white  px-5">
         <Container>
           <div className="w-full lg:py-7 flex items-center justify-between">
             <Image src={logo} alt="logo" width={180} height={100} />
@@ -56,7 +56,7 @@ const Navbar = () => {
         </Container>
       </div>
 
-      <div className="lg:hidden fixed top-0 left-0 w-full  flex items-center justify-between px-4 py-4 bg-white rounded-b-2xl shadow-md">
+      <div className="lg:hidden z-99999 fixed top-0 left-0 w-full  flex items-center justify-between px-4 py-4 bg-white rounded-b-2xl shadow-md">
         <Image src={logo} alt="logo" width={120} height={80} />
         <Link href={"/auth/login"}>
           {" "}

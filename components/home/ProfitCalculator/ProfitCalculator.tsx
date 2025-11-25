@@ -5,18 +5,86 @@ import gsap from "gsap";
 import Organizations from "./Organizations";
 
 const ProfitCalculator = () => {
+  const [mounted, setMounted] = useState(false);
   const [placeholder, setPlaceholder] = useState("Enter Your Email Here");
+  const [stars, setStars] = useState<
+    { width: number; height: number; top: number; left: number }[]
+  >([]);
+
+  const containerRef = useRef<HTMLDivElement>(null);
+  const ellipseRef0 = useRef<HTMLDivElement>(null);
+  const ellipseRef1 = useRef<HTMLDivElement>(null);
+  const ellipseRef2 = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    setMounted(true); // client-only
+    // Generate stars on client only to prevent hydration mismatch
+    const generatedStars = Array.from({ length: 50 }).map(() => ({
+      width: Math.random() * 3 + 1,
+      height: Math.random() * 3 + 1,
+      top: Math.random() * 100,
+      left: Math.random() * 100,
+    }));
+    setStars(generatedStars);
+
     const handleResize = () => {
       setPlaceholder(
         window.innerWidth < 1024 ? "Email" : "Enter Your Email Here"
       );
     };
     window.addEventListener("resize", handleResize);
-    handleResize(); // initial check
+    handleResize();
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  useLayoutEffect(() => {
+    // Wait until ellipses are mounted
+    if (
+      !containerRef.current ||
+      !ellipseRef0.current ||
+      !ellipseRef1.current ||
+      !ellipseRef2.current
+    )
+      return;
+
+    const container = containerRef.current;
+    const containerWidth = container.offsetWidth;
+    const containerHeight = container.offsetHeight;
+
+    const zones = [
+      { minX: 0, maxX: containerWidth / 3 },
+      { minX: containerWidth / 3, maxX: (2 * containerWidth) / 3 },
+      { minX: (2 * containerWidth) / 3, maxX: containerWidth },
+    ];
+
+    const ellipseRefs = [ellipseRef0, ellipseRef1, ellipseRef2];
+
+    ellipseRefs.forEach((ref, index) => {
+      if (!ref.current) return;
+
+      const moveEllipse = () => {
+        const el = ref.current!;
+        const zone = zones[index];
+        const maxX = zone.maxX - el.offsetWidth;
+        const minX = zone.minX;
+        const x = minX + Math.random() * (maxX - minX);
+        const y = Math.random() * (containerHeight - el.offsetHeight);
+        const duration = 20 + Math.random() * 20;
+
+        gsap.to(el, {
+          x,
+          y,
+          duration,
+          ease: "power1.inOut",
+          onComplete: moveEllipse,
+        });
+      };
+
+      moveEllipse();
+    });
+  }, [mounted]); // only run after mounted
+
+  if (!mounted) return null; // prevents SSR mismatch
 
   const stats = [
     {
@@ -41,65 +109,6 @@ const ProfitCalculator = () => {
     },
   ];
 
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  // Individual refs for ESLint-safe access
-  const ellipseRef0 = useRef<HTMLDivElement>(null);
-  const ellipseRef1 = useRef<HTMLDivElement>(null);
-  const ellipseRef2 = useRef<HTMLDivElement>(null);
-
-const [stars] = useState(() =>
-  Array.from({ length: 50 }).map(() => ({
-    width: Math.random() * 3 + 1,
-    height: Math.random() * 3 + 1,
-    top: Math.random() * 100,
-    left: Math.random() * 100,
-  }))
-);
-
-// Remove the useLayoutEffect entirely
-
-
-  useLayoutEffect(() => {
-    if (!containerRef.current) return;
-    const container = containerRef.current;
-    const containerWidth = container.offsetWidth;
-    const containerHeight = container.offsetHeight;
-
-    const zones = [
-      { minX: 0, maxX: containerWidth / 3 },
-      { minX: containerWidth / 3, maxX: (2 * containerWidth) / 3 },
-      { minX: (2 * containerWidth) / 3, maxX: containerWidth },
-    ];
-
-    const ellipseRefs = [ellipseRef0, ellipseRef1, ellipseRef2];
-
-    ellipseRefs.forEach((ref, index) => {
-      if (!ref.current) return;
-
-      const moveEllipse = () => {
-        const el = ref.current!;
-        const zone = zones[index];
-
-        const maxX = zone.maxX - el.offsetWidth;
-        const minX = zone.minX;
-        const x = minX + Math.random() * (maxX - minX);
-        const y = Math.random() * (containerHeight - el.offsetHeight);
-        const duration = 20 + Math.random() * 20;
-
-        gsap.to(el, {
-          x,
-          y,
-          duration,
-          ease: "power1.inOut",
-          onComplete: moveEllipse,
-        });
-      };
-
-      moveEllipse();
-    });
-  }, []);
-
   return (
     <div className="pt-12">
       {" "}
@@ -107,7 +116,7 @@ const [stars] = useState(() =>
         ref={containerRef}
         className="relative w-full min-h-screen bg-[#3c142b] overflow-hidden"
       >
-        {/* Ellipses */}{" "}
+        {" "}
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
           {" "}
           <div
@@ -123,7 +132,6 @@ const [stars] = useState(() =>
             className="absolute w-32 h-48 lg:w-44 lg:h-64 bg-[#FFAA44]/30 blur-[100px] rounded-[40%_60%_40%_60%]"
           />{" "}
         </div>
-        {/* Stars */}
         <div className="absolute inset-0 pointer-events-none z-0">
           {stars.map((s, i) => (
             <div
@@ -173,7 +181,6 @@ const [stars] = useState(() =>
             By proceeding you agree to our Platform terms & Privacy Notice
           </p>
 
-          {/* Stats */}
           <div className="lg:mt-16 mt-8 border bg-[#00000033] w-full max-w-7xl mx-auto border-[#505152] py-8 rounded-[2.5rem]">
             <div className="flex flex-col lg:flex-row px-6 items-start lg:items-center justify-between w-full gap-4 lg:gap-0">
               <p className="text-white text-2xl lg:text-4xl font-medium">
