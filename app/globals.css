@@ -167,7 +167,7 @@ body {
   color: transparent;
 
   /* Responsive font size */
-  font-size: clamp(5rem, 15vw, 25rem);
+  font-size: clamp(2rem, 15vw, 25rem);
   white-space: nowrap;
   text-align: center;
 }
