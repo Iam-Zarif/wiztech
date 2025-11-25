@@ -1,37 +1,111 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# WiztecBD Frontend Task
 
-## Getting Started
+This project is structured using **Next.js** with a clean separation of concerns for easy maintainability and scalability. Below is an overview of the file/folder organization and how assets and components are managed.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Project Structure
+
+### **1. `public/`**
+
+Contains all static assets like fonts, icons, and images.
+
+* **Fonts:** Custom fonts used across the project (`Blauer-Nue.otf`).
+* **Icons:** Organized into subfolders by purpose:
+
+  * `auth/` – Authentication-related icons (Google, Apple, eye, phone, etc.)
+  * `common/` – Common UI icons (arrows, logo, reset, tick, etc.)
+  * `courses/` – Course-related icons (brokerage, coaching, events, etc.)
+  * `footer/` – Footer icons
+  * `nav/` – Navigation icons (profile, favorite)
+  * `org/` – Organization-related icons
+  * `tools/` – Tool icons (arrows, icons 1–8)
+* **Images:** Organized into functional groups:
+
+  * `login.svg` – Login page image
+  * `property/` – Images for property listings
+
+    * Includes `modal/` images for popups
+  * `testimonial/` – Images for testimonial section
+
+### **2. `app/`**
+
+Contains all Next.js application pages, layouts, and global styles.
+
+* `auth/` – Authentication pages and layout
+
+  * `login/page.tsx` → Route: `/auth/login`
+  * `register/page.tsx` → Route: `/auth/register`
+  * `layout.tsx` – Layout wrapper for auth pages
+* Global assets:
+
+  * `favicon.ico` – Site favicon
+  * `globals.css` – Global CSS styles
+* Root pages:
+
+  * `layout.tsx` – Root layout managing Navbar, Footer, and metadata
+  * `page.tsx` → Route: `/` (home page)
+
+### **3. `layout/`**
+
+Contains reusable layout components.
+
+* `Container.tsx` – Generic container component used for layout consistency
+
+### **4. `hooks/`**
+
+(Hooks folder exists for future custom hooks, currently empty or with project-specific hooks)
+
+---
+
+## Routes Overview
+
+The project currently has **3 main routes**:
+
+| Route            | Page/File                    |
+| ---------------- | ---------------------------- |
+| `/`              | `app/page.tsx`               |
+| `/auth/login`    | `app/auth/login/page.tsx`    |
+| `/auth/register` | `app/auth/register/page.tsx` |
+
+---
+
+## Metadata & Global Imports
+
+Root layout imports essential components and global styles:
+
+```ts
+import type { Metadata } from "next";
+import "./globals.css";
+import Navbar from "@/components/shared/Navbar";
+import Footer from "@/components/shared/Footer";
+import "keen-slider/keen-slider.min.css";
+import "@smastrom/react-rating/style.css";
+
+export const metadata: Metadata = { ... };
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+* **Navbar & Footer** are included in the root layout to ensure consistency across all pages.
+* **Global CSS** and external library CSS are imported for site-wide usage.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Notes on Fonts & Colors
 
-## Learn More
+* Multiple fonts are included
+* Custom color palettes are partially managed per component due to multiple color variations across sections.
+* If the project had fewer fonts/colors, it would be fully manageable with a single global palette.
+* could use rer-usable icon components
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This structure ensures:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **Scalability:** Easy to add new pages, components, or assets.
+2. **Maintainability:** Clear separation of static assets, app pages, and reusable layouts.
+3. **Readability:** Logical folder organization for quick navigation and developer onboarding.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Project URL:** [https://wiztech-six.vercel.app](https://wiztech-six.vercel.app)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# wiztech
